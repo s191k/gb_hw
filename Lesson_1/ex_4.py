@@ -11,5 +11,8 @@
 """
 
 def get_nums(number):
-    one_boy = int(number / 6)
-    print(f" Петя и Сережа сделали по {one_boy}, а Катя {one_boy*2*2}")
+    if (number/6 - int(number/6)) == 0:
+        one_boy = int(number / 6)
+        print(f" Петя и Сережа сделали по {one_boy}, а Катя {one_boy*2*2}")
+
+get_nums(8)
