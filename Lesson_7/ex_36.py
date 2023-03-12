@@ -21,7 +21,7 @@
 
 def print_operation_table(operation, num_rows=6, num_columns=6):
     for x in range(num_rows+1)[1:]:
-        print([y*x for y in range(num_columns+1)[1:]])
+        print([operation(x,y) for y in range(num_columns+1)[1:]])
     return operation(num_rows,num_columns)
 
 print(print_operation_table(lambda x, y: x * y))
