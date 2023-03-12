@@ -20,6 +20,9 @@ def check_poem(poem_text):
     for _ in poem_text_list:
         cur_count_of_vowels = lambda x: sum(map(x.count,russian_vowels_chars))
         cur_count_of_vowels = cur_count_of_vowels(_)
+        if cur_count_of_vowels == 0:
+            print("В предложении отсутствует гласные")
+            return
         if started == False:
             started = True
             count_of_vowels = cur_count_of_vowels
