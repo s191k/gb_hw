@@ -11,13 +11,13 @@ public class Cat {
         this.isHungry = isHungry;
     }
 
-    public void eat(Plate plate) throws Exception {
-        if(plate.getFood() < this.appetite) {
-            System.out.println("Котику " + this.name + " не хватит еды");
-            return;
-        }
-
+    public void eat(Plate plate) {
         if(this.isHungry) {
+            if(plate.getFood() < this.appetite) {
+                System.out.println("Котику " + this.name + " не хватит еды");
+                return;
+            }
+
             plate.setFood(plate.getFood() - this.getAppetite());
             this.isHungry = false;
         }
