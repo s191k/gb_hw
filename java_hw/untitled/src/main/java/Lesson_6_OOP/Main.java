@@ -11,19 +11,22 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Введите заказ:");
-        CreateOrderHelper createOrderHelper = new CreateOrderHelper();
-        Order order = createOrderHelper.inputFromConsole();
-        Order order2 = createOrderHelper.loadFromJsonFile("exampleFromFile");
+//        TODO выглядит какой-то оверкилл/что-то очень неправильное , т.к. хз как возвращать нужные объекты
+//        CreateOrderFactory createOrderFactory = new CreateOrderFactory(
+//                new ArrayList<>( List.of(new CreateOrderByConsole(), new CreateOrderFromJsonFile("exampleFromFile"))));
+
+        CreateOrderByConsole createOrderByConsole = new CreateOrderByConsole();
+        CreateOrderFromJsonFile createOrderFromJsonFile = new CreateOrderFromJsonFile("exampleFromFile");
+        Order orderFromConsole = createOrderByConsole.createOrder();
+        Order orderFromJsonFile =createOrderFromJsonFile.createOrder();
 
         List<SaveOrderHelper> saveOrderHelperList = new ArrayList<>();
         saveOrderHelperList.add(new SaveOrderToJsonHelper());
         saveOrderHelperList.add(new SaveOrderToTxtHelper());
         saveOrderHelperList.add(new SaveOrderToXmlHelper());
-        for (SaveOrderHelper curSaverOrderHelper: saveOrderHelperList) {
-            curSaverOrderHelper.saveOrderToFile(order, "order");
-            curSaverOrderHelper.saveOrderToFile(order2, "orderFromFile");
-        }
+
+        new SaveOrderFactory(saveOrderHelperList, orderFromConsole, "order").saveOrders();
+        new SaveOrderFactory(saveOrderHelperList, orderFromJsonFile, "orderFromFile").saveOrders();
 
     }
 
