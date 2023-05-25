@@ -15,8 +15,8 @@ public class Main {
 //        CreateOrderFactory createOrderFactory = new CreateOrderFactory(
 //                new ArrayList<>( List.of(new CreateOrderByConsole(), new CreateOrderFromJsonFile("exampleFromFile"))));
 
-        CreateOrderByConsole createOrderByConsole = new CreateOrderByConsole();
-        CreateOrderFromJsonFile createOrderFromJsonFile = new CreateOrderFromJsonFile("exampleFromFile");
+        CreateOrderHelper createOrderByConsole = new CreateOrderByConsole();
+        CreateOrderHelper createOrderFromJsonFile = new CreateOrderFromJsonFile("exampleFromFile");
         Order orderFromConsole = createOrderByConsole.createOrder();
         Order orderFromJsonFile =createOrderFromJsonFile.createOrder();
 
